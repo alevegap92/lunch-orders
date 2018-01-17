@@ -1,0 +1,31 @@
+<div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		{% if object %}
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<center><h3>Update Food type</h3></center>
+			</div>
+		<form role="form" enctype="multipart/form-data" action="{% url 'lunch:update_foodtype' object.pk %}" method="post">
+		{% else %}
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<center><h3>Create Food type</h3></center>
+			</div>
+		<form role="form" enctype="multipart/form-data" action="{% url 'lunch:create_foodtype' %}" method="post">
+		{% endif %}
+			{% csrf_token %}
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{{ form.as_p }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 text-right">
+					<input type="submit" class="btn btn-primary" name="submit" value="Save">
+					<button type="button" class="btn btn-default" onclick="return cerrar_modal()">
+						Cancel
+					</button>
+				</div>
+			</div>
+		</form>
+</div>

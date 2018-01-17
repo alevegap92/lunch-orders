@@ -1,0 +1,29 @@
+<div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">x</button>
+			<h3>Detail Foodtype</h3>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-lg-4">
+
+					<label>{{ object.foodselect }}</label>
+					<label>Name:</label>
+					<p>{{ object.name }}</p>
+					<label>Description:</label>
+					<p>{{ object.description }}</p>
+					<label>price:</label>
+					<p>{{ object.price}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="col-lg-12 text-right">
+				<button type="button" class="btn btn-primary" onclick="return cerrar_modal()">
+					Aceptar
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
