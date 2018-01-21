@@ -4,15 +4,16 @@ from django.core.urlresolvers import reverse_lazy
 from .models import *
 from .forms import *
 # Create your views here.
+
 #---------START VIEWS Menu--------------------#
 class ListMenu(ListView):
     model = Menu
-    template_name = 'menu_list.html'
+    template_name = 'menu/menu_list.html'
     context_object_name = 'menu'
 
 class CreateMenu(CreateView):
     model = Menu
-    template_name = 'food_form.html'
+    template_name = 'menu/menu_form.html'
     form_class = MenuForm
     success_url = reverse_lazy('lunch:list_menu')
 
@@ -22,7 +23,7 @@ class CreateMenu(CreateView):
 
 class UpdateMenu(UpdateView):
     model = Menu
-    template_name = 'food_form.html'
+    template_name = 'menu/menu_form.html'
     form_class = MenuForm
     success_url = reverse_lazy('lunch:list_menu')
 
@@ -32,7 +33,7 @@ class UpdateMenu(UpdateView):
 
 class DetailMenu(DetailView):
     model = Menu
-    template_name = 'menu_detail.html'
+    template_name = 'menu/menu_detail.html'
 
 class DeleteMenu(DeleteView):
     model = Menu
