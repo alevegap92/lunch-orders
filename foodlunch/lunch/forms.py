@@ -1,6 +1,7 @@
 from django.forms import ModelForm
+from django import forms
 from .models import *
-
+from django.forms import CheckboxSelectMultiple
 class FoodTypeForm(ModelForm):
     class Meta:
         model = FoodType
@@ -14,23 +15,19 @@ class FoodTypeForm(ModelForm):
                 'class': 'form-control'
             })      
 
-class MenuForm(ModelForm):
+class MenuForm(forms.ModelForm):
     class Meta:
         model = Menu
-        fields = '__all__'
-        exclude = ['created','to_update']
-
-    def __init__(self, *args, **kwargs):
-        super(MenuForm, self).__init__(*args, **kwargs)
-        for field in iter(self.fields):
-            self.fields[field].widget.attrs.update({
-                'class': 'form-control'
-            })
+        widgets = {
+        'menu_name': forms.TextInput(attrs={'class':'form-control'}),
+        'menu_foodtype': forms.CheckboxSelectMultiple,
+        'price': forms.NumberInput(attrs={'class':'form-control'}),
+        }    
+        exclude = ['menu_time','created','to_update']
 
 class OrderMenuForm(ModelForm):
     class Meta:
         model = OrderMenu
-        fields = '__all__'
         exclude = ['ordertime','oderdate']
 
     def __init__(self, *args, **kwargs):
